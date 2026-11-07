@@ -1,7 +1,6 @@
 # Schärfere Untergrenzen: die Lücke schließen – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-schaerfere-untergrenzen-umstauen-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-schaerfere-untergrenzen-umstauen-demo.streamlit.app/)**
 
 Neuntes Stück der Konzepte-Reihe **„Umstauen: Untergrenze und Suche“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. [Stück 2](https://sebastianhanisch-untergrenze-umstauen-demo.streamlit.app/) hat die **Untergrenze** gebaut: Jeder **Blocker** (ein Container über einem früher abzurufenden) muss mindestens einmal bewegt werden. Sie übersieht, dass ein Blocker oft **keinen sicheren Platz** findet und ein zweites Mal bewegt werden muss. Dieses Stück baut **vier Schranken** (LB1 bis LB4), rechnet sie live auf kleinen Buchten und misst vorberechnet, **wie oft sie das Optimum treffen**, **wie weit die Lücke schrumpft** und **was die Suche davon hat**.
 
