@@ -297,5 +297,5 @@ def verdict_two(stats: dict, name: str) -> tuple[str, str]:
     n, miss = stats["n"], stats["miss"]
     text = f"{name}: LB1 verfehlt das Optimum in {miss['LB1']} von {n} Buchten, LB2 in {miss['LB2']}."
     if miss["LB2"] == 0:
-        return "success", text + " Bei zwei Lagen ist die zweite Zählung das ganze Optimum."
-    return "info", text + " Bei zwei Lagen ist die zweite Zählung bis auf wenige Ausnahmen das ganze Optimum."
+        return "success", text + " In dieser Stichprobe trifft die zweite Zählung bei zwei Lagen das Optimum in allen Buchten; erschöpfend gerechnet gibt es vereinzelte Ausnahmen."
+    return "info", text + " Bei zwei Lagen trifft die zweite Zählung das Optimum bis auf wenige Ausnahmen."

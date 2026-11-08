@@ -31,7 +31,7 @@ GAP_SEED = 27          # 3 x 3, Platz 2: alle vier Schranken 5, Optimum 6: die L
 BIG_GAIN_SEED = 0      # 4 x 4, Platz 2: LB1 7, LB2 10 = Optimum 10
 TWO_LAYER_SEED = 3     # 4 x 2, Platz 2: LB1 2, LB2 3 = Optimum 3
 MISS_SEED = 100        # 3 x 2, Platz 2: (3, 6), (1, 5), (4, 2): LB1 2, LB2 bis LB4 3, Optimum 4 (der eine Fehlschlag von LB2 unter allen Buchten 3 x 2)
-COST_SEED = 0          # 5 x 4, Platz 2: LB1 14, LB2 bis LB4 16, Optimum 18; mit LB4 gut ein Drittel der Knoten, aber über 50-mal so lange
+COST_SEED = 0          # 5 x 4, Platz 2: LB1 14, LB2 bis LB4 16, Optimum 18; mit LB4 knapp ein Drittel der Knoten, aber um ein Vielfaches länger
 HAND_BAY = ((1, 5), (2, 3), (4, 6))                       # die Bucht von Hand (Stück 2: drei Blocker), Höchsthöhe 4
 HAND_HEIGHT = 4
 MISS_BAY = ((1, 5), (3, 6), (4, 2))                        # der eine Fehlschlag von LB2 unter den 120 Buchten 3 x 2, Höchsthöhe 4

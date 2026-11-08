@@ -6,7 +6,7 @@ Neuntes Stück der Konzepte-Reihe **„Umstauen: Untergrenze und Suche“** für
 
 ## Warum dieses Problem
 
-Eine Untergrenze entscheidet, wie viel eine Suche beschneiden kann, und sie beweist ohne Suche, dass eine Regel optimal ist. Die einfache Zählung ist billig, lässt aber bei 3 und 4 Lagen eine Lücke von im Mittel 1,3 bis 3,2 Hüben. Hier die Messung, wie weit eine **Zählung der Blocker ohne sicheren Stapel** (LB2) diese Lücke schließt, was eine **Platzplanung** (LB3) und **ein Abrufschritt Vorausschau** (LB4) zusätzlich bringen und was das je Suchknoten kostet. Ergebnis: Bei **zwei Lagen** schließt LB2 die Lücke fast vollständig (in 2 019 von 2 020 geprüften Buchten gleich dem Optimum), bei drei Lagen zur Hälfte. Mehr Schärfe spart Knoten, aber **nicht Zeit**: Nur LB2 spart Knoten **und** Zeit.
+Eine Untergrenze entscheidet, wie viel eine Suche beschneiden kann, und sie beweist ohne Suche, dass eine Regel optimal ist. Die einfache Zählung ist billig, lässt aber bei 3 und 4 Lagen eine Lücke von im Mittel 1,3 bis 3,2 Hüben. Hier die Messung, wie weit eine **Zählung der Blocker ohne sicheren Stapel** (LB2) diese Lücke schließt, was eine **Platzplanung** (LB3) und **ein Abrufschritt Vorausschau** (LB4) zusätzlich bringen und was das je Suchknoten kostet. Ergebnis: Bei **zwei Lagen** schließt LB2 die Lücke fast vollständig (in 2 019 von 2 020 geprüften Buchten gleich dem Optimum), bei drei Lagen um rund 60 %. Mehr Schärfe spart Knoten, aber **nicht Zeit**: Nur LB2 spart Knoten **und** im Median je Bucht etwas Zeit.
 
 ## Die Schranken
 
@@ -55,7 +55,9 @@ Alle Zahlen sind Messungen an festen Buchten, nachgerechnet in `tests/test_claim
 | 5 × 2 (300) | 86 | 0 | 0 | 0 |
 | 6 × 2 (100) | 26 | 0 | 0 | 0 |
 
-Der eine Fehlschlag von LB2: die Bucht (1, 5), (3, 6), (4, 2) mit Höchsthöhe 4 (LB1 2, LB2 bis LB4 3, Optimum 4).
+Die Null bei 4, 5 und 6 Stapeln gilt für diese Zufallsbuchten. Eine Gegenrechnung außerhalb der Demo (eigene Aufzählung und eigene Breitensuche über alle Buchten) fand auch dort Fehlschläge von LB2: bei 4 × 2 in 2 von 1 680 Buchten, bei 5 × 2 in 6 von 30 240; ein Beispiel ist (1, 7), (4, 8), (5, 2), (6, 3) mit Höchsthöhe 4 (LB1 2, LB2 bis LB4 3, Optimum 4).
+
+Der eine Fehlschlag von LB2 unter allen 120 Buchten 3 × 2: die Bucht (1, 5), (3, 6), (4, 2) mit Höchsthöhe 4 (LB1 2, LB2 bis LB4 3, Optimum 4).
 
 **C: Suche mit der jeweiligen Schranke** (IDA\* mit Zustandsmerken, Knotenlimit 1 Mio., kein Lauf am Limit; Knoten Median / Maximum, darunter die Zeit Median je Bucht)
 
@@ -76,12 +78,12 @@ Summe der Zeit über die 40 Buchten 5 × 4: LB1 2,55 s, LB2 1,86 s, LB3 10,9 s, 
 
 | Frage | Befund |
 |---|---|
-| **Sind die Schranken zulässig?** | Ja: Kein Zustand in 1 246 geprüften Zuständen (Phase 0) und in allen im Test unabhängig gerechneten Zuständen (alle aus den 120 Buchten 3 × 2 erreichbaren sowie Stichproben aus 4 × 2, 3 × 3 und 4 × 3) liegt über dem Restoptimum; LB1 ≤ LB2 ≤ LB3 ≤ LB4 überall. |
+| **Sind die Schranken zulässig?** | Ja, in allen geprüften Zuständen: Keiner liegt über dem Restoptimum, weder in den im Test unabhängig gerechneten Zuständen (alle aus den 120 Buchten 3 × 2 erreichbaren sowie Stichproben aus 4 × 2, 3 × 3 und 4 × 3) liegt über dem Restoptimum; noch in den Buchten der Tabellen; LB1 ≤ LB2 ≤ LB3 ≤ LB4 gilt in allen geprüften Zuständen. |
 | **Wie weit schließt die Zählung ohne sicheren Stapel die Lücke?** | Bei zwei Lagen fast vollständig: LB2 trifft in 2 019 von 2 020 Buchten, LB1 nur in 1 375 (rund zwei von drei). Bei drei Lagen trifft LB2 in 57 bis 65 von 100 Buchten gegen 19 bis 25 mit LB1, bei vier Lagen in 19 bis 24 gegen 1 bis 4; die mittlere Lücke sinkt von 1,25 bis 1,52 auf 0,43 bis 0,64 (drei Lagen) und von 3,0 bis 3,24 auf 1,56 bis 1,83 (vier Lagen). |
 | **Was bringt die Platzplanung (LB3)?** | Wenig: 59 gegen 57 (3 × 3), 66 gegen 63 (4 × 3), sonst gleich viele Treffer wie LB2. |
 | **Was bringt die Vorausschau (LB4)?** | Mehr: 73 gegen 57 (3 × 3), 80 gegen 63 (4 × 3), 76 gegen 65 (5 × 3), 32 gegen 20 (3 × 4), 37 gegen 24 (4 × 4), 28 gegen 19 (5 × 4) Treffer. |
-| **Bleibt eine Lücke?** | Ja, bei drei und vier Lagen: auch LB4 trifft nur in 28 bis 80 von 100 Buchten. Die Lücke kommt aus Mehrfachhüben, die erst spätere Abrufschritte erzwingen (Preset „Die Lücke bleibt“: alle vier Schranken 5, Optimum 6). |
-| **Was hat die Suche davon?** | LB2 halbiert im Median die Knoten (zum Beispiel 16 auf 8, 284 auf 134,5) und ist in jeder Zelle **nicht langsamer** als LB1 (0,2 gegen 0,3 ms bis 4,0 gegen 5,5 ms). LB4 spart weitere Knoten (5 × 4: auf ein Fünftel von LB1), kostet bei 4 × 4 und 5 × 4 aber ein Mehrfaches der Zeit (5 × 4: 31,6 gegen 5,5 ms im Median). LB3 spart kaum Knoten gegenüber LB2 und kostet mehr Zeit. |
+| **Bleibt eine Lücke?** | Ja, bei drei und vier Lagen: auch LB4 trifft nur in 28 bis 80 von 100 Buchten. Wahrscheinlich kommt die Lücke aus Mehrfachhüben, die erst spätere Abrufschritte erzwingen (Deutung am Beispiel, nicht gemessen; Preset „Die Lücke bleibt“: alle vier Schranken 5, Optimum 6). |
+| **Was hat die Suche davon?** | LB2 halbiert im Median die Knoten (zum Beispiel 16 auf 8, 284 auf 134,5) und ist im Median je Bucht in diesen fünf Zellen etwas schneller als LB1 (0,2 gegen 0,3 ms bis 4,0 gegen 5,5 ms); in der Summe über alle Buchten ist der Abstand klein und schwankt mit der Last (5 × 4: um 6 bis 27 %, je nach Lauf). LB4 spart weitere Knoten (5 × 4: auf ein Fünftel von LB1), kostet bei 4 × 4 und 5 × 4 aber ein Mehrfaches der Zeit (5 × 4: 31,6 gegen 5,5 ms im Median). LB3 spart kaum Knoten gegenüber LB2 und kostet mehr Zeit. |
 
 **Presets** (Eigenschaften in `tests/test_presets.py`): „Alltag“ (3 × 3, Bucht 12: LB1 bis LB3 4, LB4 und Optimum 5), „Zwei Lagen: LB2 reicht“ (4 × 2, Bucht 3: LB1 2, LB2 und Optimum 3), „LB2 schließt die Lücke“ (4 × 4, Bucht 0: LB1 7, LB2 und Optimum 10), „Die Lücke bleibt“ (3 × 3, Bucht 27: alle 5, Optimum 6), „LB2 verfehlt“ (3 × 2, Bucht 100: LB2 3, Optimum 4), „Schärfer lohnt nicht“ (5 × 4, Bucht 0: weniger Knoten mit jeder Stufe, Optimum 18).
 
@@ -94,7 +96,7 @@ Summe der Zeit über die 40 Buchten 5 × 4: LB1 2,55 s, LB2 1,86 s, LB3 10,9 s, 
 - **Eigene Konstruktion;** die Zuordnung der Zählung „kein sicherer Stapel“ zu Zhu u. a. 2012 ist aus dem Gedächtnis und nicht nachgeprüft.
 - **Nur restricted, nur volle Buchten, Platz 2 in den Tabellen,** Zufallsbuchten aus der Zufallsfolge von Python.
 - **Kleine Zellen** in der Suchtabelle: 5 × 3 mit 60, 4 × 4 mit 60, 5 × 4 mit 40 Buchten.
-- **Zwei Lagen:** Für 4, 5 und 6 Stapel sind es Zufallsbuchten (Seeds ab 1000), nicht alle; vollständig ist nur 3 × 2.
+- **Zwei Lagen:** Für 4, 5 und 6 Stapel sind es Zufallsbuchten (Seeds ab 1000), nicht alle; vollständig ist nur 3 × 2. Erschöpfend gerechnet verfehlt LB2 auch bei 4 und 5 Stapeln einzelne Buchten (siehe Befund B).
 
 ## Verifikation
 
@@ -149,7 +151,7 @@ pip install -r requirements-dev.txt
 pytest tests/ -v
 ```
 
-100 Tests, rund eine Minute.
+100 Tests, rund drei Minuten (auf diesem Rechner gemessen, je nach Last).
 
 Gebaut mit Streamlit und Plotly.
 

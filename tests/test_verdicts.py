@@ -84,7 +84,7 @@ def test_search_verdict_three_states_and_numbers():
 
 def test_two_layer_verdict_two_states_and_numbers():
     kind, text = ev.verdict_two({"n": 1500, "miss": {"LB1": 489, "LB2": 0, "LB3": 0, "LB4": 0}}, "4 × 2")
-    assert kind == "success" and text == "4 × 2: LB1 verfehlt das Optimum in 489 von 1500 Buchten, LB2 in 0. Bei zwei Lagen ist die zweite Zählung das ganze Optimum."
+    assert kind == "success" and text == "4 × 2: LB1 verfehlt das Optimum in 489 von 1500 Buchten, LB2 in 0. In dieser Stichprobe trifft die zweite Zählung bei zwei Lagen das Optimum in allen Buchten; erschöpfend gerechnet gibt es vereinzelte Ausnahmen."
     kind, text = ev.verdict_two({"n": 120, "miss": {"LB1": 44, "LB2": 1, "LB3": 1, "LB4": 1}}, "3 × 2")
     assert kind == "info" and text == ("3 × 2: LB1 verfehlt das Optimum in 44 von 120 Buchten, LB2 in 1. "
-                                       "Bei zwei Lagen ist die zweite Zählung bis auf wenige Ausnahmen das ganze Optimum.")
+                                       "Bei zwei Lagen trifft die zweite Zählung das Optimum bis auf wenige Ausnahmen.")

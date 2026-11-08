@@ -218,7 +218,7 @@ st.markdown(
 | **Eigene Konstruktion** | Die Zählung „kein sicherer Stapel“ ist aus dem Gedächtnis dem Stand der Technik zugeordnet (Zhu u. a. 2012), nicht nachgeprüft; LB3 und LB4 sind eigene Bausteine. | – |
 | **Nur restricted, nur volle Buchten, Platz 2 in den Tabellen** | Mit anderer Hubmenge (Stück 3), anderer Füllung oder anderem Platz ändern sich die Zahlen. | – |
 | **Kleine Zellen** | 5 × 3 mit 60, 4 × 4 mit 60 und 5 × 4 mit 40 Buchten in der Suchtabelle; die Aussagen dort sind grob. | – |
-| **Zwei Lagen: Zufallsbuchten** | 4, 5 und 6 Stapel sind je 1 500, 300 und 100 Zufallsbuchten, nicht alle; nur 3 × 2 ist vollständig (120 Buchten). | – |
+| **Zwei Lagen: Zufallsbuchten** | 4, 5 und 6 Stapel sind je 1 500, 300 und 100 Zufallsbuchten, nicht alle; nur 3 × 2 ist vollständig (120 Buchten). Eine Gegenrechnung außerhalb der Demo über alle Buchten mit 4 und 5 Stapeln fand auch dort einzelne Buchten, die LB2 verfehlt. | – |
 """
 )
 
